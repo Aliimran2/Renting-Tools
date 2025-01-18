@@ -60,7 +60,7 @@
         tools:layout="@layout/fragment_add_tool" />
     <fragment
         android:id="@+id/rentToolsFragment"
-        android:name="com.miassolutions.rentingtools.RentToolsFragment"
+        android:name="com.miassolutions.rentingtools.ui.fragments.RentToolsFragment"
         android:label="fragment_rent_tools"
         tools:layout="@layout/fragment_rent_tools" />
 </navigation>
