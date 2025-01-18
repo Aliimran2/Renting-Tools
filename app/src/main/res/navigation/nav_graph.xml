@@ -16,8 +16,8 @@
             android:id="@+id/action_customerListFragment_to_addEditCustomerFragment"
             app:destination="@id/addEditCustomerFragment" />
         <action
-            android:id="@+id/action_customerListFragment_to_rentalFragment"
-            app:destination="@id/rentalFragment" />
+            android:id="@+id/action_customerListFragment_to_rentToolsFragment"
+            app:destination="@id/rentToolsFragment" />
     </fragment>
     <fragment
         android:id="@+id/addEditCustomerFragment"
@@ -28,7 +28,11 @@
         android:id="@+id/rentalFragment"
         android:name="com.miassolutions.rentingtools.ui.fragments.RentalFragment"
         android:label="fragment_rental"
-        tools:layout="@layout/fragment_rental" />
+        tools:layout="@layout/fragment_rental" >
+        <action
+            android:id="@+id/action_rentalFragment_to_toolListFragment"
+            app:destination="@id/toolListFragment" />
+    </fragment>
     <fragment
         android:id="@+id/toolListFragment"
         android:name="com.miassolutions.rentingtools.ui.fragments.ToolListFragment"
@@ -54,4 +58,9 @@
         android:name="com.miassolutions.rentingtools.ui.fragments.AddToolFragment"
         android:label="@string/add_new_tool"
         tools:layout="@layout/fragment_add_tool" />
+    <fragment
+        android:id="@+id/rentToolsFragment"
+        android:name="com.miassolutions.rentingtools.RentToolsFragment"
+        android:label="fragment_rent_tools"
+        tools:layout="@layout/fragment_rent_tools" />
 </navigation>
