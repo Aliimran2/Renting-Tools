@@ -2,6 +2,8 @@ package com.miassolutions.rentingtools
 
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -58,7 +60,6 @@ class MainActivity : AppCompatActivity() {
 
         setupActionBarWithNavController(navController, appBarConfiguration)
 
-        binding.bottomNavigationView.setupWithNavController(navController)
         binding.navigationView.setupWithNavController(navController)
 
         val aboutApp = binding.navigationView.menu.findItem(R.id.aboutApp)
@@ -88,6 +89,29 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.toolbar_menu, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_home -> {
+                Toast.makeText(this, "Home clicked", Toast.LENGTH_SHORT).show()
+                true
+            }
+            R.id.action_edit -> {
+                Toast.makeText(this, "Edit clicked", Toast.LENGTH_SHORT).show()
+                true
+            }
+            R.id.action_delete -> {
+                Toast.makeText(this, "Delete clicked", Toast.LENGTH_SHORT).show()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
     }
 
 
