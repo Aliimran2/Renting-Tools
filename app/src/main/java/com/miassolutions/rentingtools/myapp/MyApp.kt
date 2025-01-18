@@ -1,4 +1,4 @@
-package com.miassolutions.rentingtools
+package com.miassolutions.rentingtools.myapp
 
 import android.app.Application
 

@@ -1,9 +1,7 @@
-package com.miassolutions.rentingtools
+package com.miassolutions.rentingtools.ui.activity
 
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
@@ -12,7 +10,10 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
+import com.miassolutions.rentingtools.utils.PermissionUtils
+import com.miassolutions.rentingtools.R
 import com.miassolutions.rentingtools.databinding.ActivityMainBinding
+import com.miassolutions.rentingtools.utils.showToast
 
 class MainActivity : AppCompatActivity() {
 
@@ -49,9 +50,8 @@ class MainActivity : AppCompatActivity() {
 
         appBarConfiguration = AppBarConfiguration(
             setOf(
-                R.id.stockFragment,
-                R.id.customersListFragment,
-                R.id.addCustomerFragment,
+                R.id.customerListFragment,
+                R.id.addEditCustomerFragment,
                 R.id.addToolFragment
             ), binding.drawerLayout
         )
@@ -69,49 +69,7 @@ class MainActivity : AppCompatActivity() {
             true
         }
 
-        val mockdb = binding.navigationView.menu.findItem(R.id.mockData)
-        mockdb.setOnMenuItemClickListener {
 
-
-
-
-            binding.drawerLayout.closeDrawers()
-            true
-        }
-
-        val reset = binding.navigationView.menu.findItem(R.id.resetItem)
-
-        reset.setOnMenuItemClickListener {
-
-            binding.drawerLayout.closeDrawers()
-            true
-
-        }
-
-
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.toolbar_menu, menu)
-        return true
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_home -> {
-                Toast.makeText(this, "Home clicked", Toast.LENGTH_SHORT).show()
-                true
-            }
-            R.id.action_edit -> {
-                Toast.makeText(this, "Edit clicked", Toast.LENGTH_SHORT).show()
-                true
-            }
-            R.id.action_delete -> {
-                Toast.makeText(this, "Delete clicked", Toast.LENGTH_SHORT).show()
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
     }
 
 

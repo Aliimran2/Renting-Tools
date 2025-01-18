@@ -6,7 +6,52 @@
     app:startDestination="@id/customerListFragment">
     <fragment
         android:id="@+id/customerListFragment"
-        android:name="com.miassolutions.rentingtools.CustomerListFragment"
-        android:label="fragment_customer_list"
-        tools:layout="@layout/fragment_customer_list" />
+        android:name="com.miassolutions.rentingtools.ui.fragments.CustomerListFragment"
+        android:label="@string/customers"
+        tools:layout="@layout/fragment_customer_list">
+        <action
+            android:id="@+id/action_customerListFragment_to_summaryFragment"
+            app:destination="@id/summaryFragment" />
+        <action
+            android:id="@+id/action_customerListFragment_to_addEditCustomerFragment"
+            app:destination="@id/addEditCustomerFragment" />
+        <action
+            android:id="@+id/action_customerListFragment_to_rentalFragment"
+            app:destination="@id/rentalFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addEditCustomerFragment"
+        android:name="com.miassolutions.rentingtools.ui.fragments.AddEditCustomerFragment"
+        android:label="@string/add_new_customer"
+        tools:layout="@layout/fragment_add_edit_customer" />
+    <fragment
+        android:id="@+id/rentalFragment"
+        android:name="com.miassolutions.rentingtools.ui.fragments.RentalFragment"
+        android:label="fragment_rental"
+        tools:layout="@layout/fragment_rental" />
+    <fragment
+        android:id="@+id/toolListFragment"
+        android:name="com.miassolutions.rentingtools.ui.fragments.ToolListFragment"
+        android:label="@string/tools"
+        tools:layout="@layout/fragment_tool_list" />
+    <fragment
+        android:id="@+id/returnFragment"
+        android:name="com.miassolutions.rentingtools.ui.fragments.ReturnFragment"
+        android:label="@string/return_tool"
+        tools:layout="@layout/fragment_return" />
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.miassolutions.rentingtools.ui.fragments.PaymentFragment"
+        android:label="Payment"
+        tools:layout="@layout/fragment_payment" />
+    <fragment
+        android:id="@+id/summaryFragment"
+        android:name="com.miassolutions.rentingtools.ui.fragments.SummaryFragment"
+        android:label="Summary"
+        tools:layout="@layout/fragment_summary" />
+    <fragment
+        android:id="@+id/addToolFragment"
+        android:name="com.miassolutions.rentingtools.ui.fragments.AddToolFragment"
+        android:label="@string/add_new_tool"
+        tools:layout="@layout/fragment_add_tool" />
 </navigation>

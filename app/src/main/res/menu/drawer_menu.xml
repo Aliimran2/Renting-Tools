@@ -6,14 +6,11 @@
 
     <group>
 
-        <item
-            android:id="@+id/stockFragment"
-            android:icon="@drawable/tools_icon"
-            android:title="@string/stock" />
+
 
         <item
             android:icon="@drawable/customer_icon"
-            android:id="@+id/customersListFragment"
+            android:id="@+id/customerListFragment"
             android:title="@string/customers" />
     </group>
 
@@ -28,7 +25,7 @@
 
     <group>
         <item
-            android:id="@+id/addCustomerFragment"
+            android:id="@+id/addEditCustomerFragment"
             android:title="@string/add_new_customer" />
 
 
@@ -46,12 +43,7 @@
 
     <group>
 
-        <item
-            android:id="@+id/mockData"
-            android:title="Mock Data" />
-        <item
-            android:id="@+id/resetItem"
-            android:title="Reset" />
+
         <item
             android:icon="@drawable/about_icon"
             android:id="@+id/aboutApp"
