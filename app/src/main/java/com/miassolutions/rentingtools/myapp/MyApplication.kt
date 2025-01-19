@@ -4,7 +4,7 @@ import android.app.Application
 import com.miassolutions.rentingtools.core.AppDatabase
 import com.miassolutions.rentingtools.data.ToolRentalRepository
 
-class MyApp : Application() {
+class MyApplication : Application() {
 
     private val database by lazy { AppDatabase.getDatabase(this) }
 

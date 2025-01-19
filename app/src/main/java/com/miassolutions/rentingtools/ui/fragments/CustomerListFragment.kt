@@ -11,7 +11,7 @@ import androidx.navigation.fragment.findNavController
 import com.miassolutions.rentingtools.R
 import com.miassolutions.rentingtools.data.models.Customer
 import com.miassolutions.rentingtools.databinding.FragmentCustomerListBinding
-import com.miassolutions.rentingtools.myapp.MyApp
+import com.miassolutions.rentingtools.myapp.MyApplication
 import com.miassolutions.rentingtools.ui.adapters.CustomerListAdapter
 import com.miassolutions.rentingtools.ui.viewmodel.SharedViewModel
 import com.miassolutions.rentingtools.ui.viewmodel.SharedViewModelFactory
@@ -25,7 +25,7 @@ class CustomerListFragment : Fragment(R.layout.fragment_customer_list) {
     private lateinit var adapter: CustomerListAdapter
 
     private val rentalViewModel: SharedViewModel by activityViewModels {
-        SharedViewModelFactory((requireActivity().application as MyApp).repository)
+        SharedViewModelFactory((requireActivity().application as MyApplication).repository)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -48,7 +48,7 @@ class CustomerListFragment : Fragment(R.layout.fragment_customer_list) {
         )
         binding.rvCustomerList.adapter = adapter
         binding.fabNewCustomer.setOnClickListener {
-            findNavController().navigate(R.id.action_customerListFragment_to_rentToolsFragment)
+            findNavController().navigate(R.id.action_customerListFragment_to_addEditCustomerFragment)
         }
     }
 
