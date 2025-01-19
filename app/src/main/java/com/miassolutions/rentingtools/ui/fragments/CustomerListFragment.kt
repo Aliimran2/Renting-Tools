@@ -3,21 +3,30 @@ package com.miassolutions.rentingtools.ui.fragments
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.miassolutions.rentingtools.R
 import com.miassolutions.rentingtools.data.models.Customer
 import com.miassolutions.rentingtools.databinding.FragmentCustomerListBinding
+import com.miassolutions.rentingtools.myapp.MyApp
 import com.miassolutions.rentingtools.ui.adapters.CustomerListAdapter
+import com.miassolutions.rentingtools.ui.viewmodel.SharedViewModel
+import com.miassolutions.rentingtools.ui.viewmodel.SharedViewModelFactory
 import com.miassolutions.rentingtools.utils.showToast
 
 class CustomerListFragment : Fragment(R.layout.fragment_customer_list) {
 
-    private var _binding : FragmentCustomerListBinding? = null
+    private var _binding: FragmentCustomerListBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var adapter: CustomerListAdapter
+
+    private val rentalViewModel: SharedViewModel by activityViewModels {
+        SharedViewModelFactory((requireActivity().application as MyApp).repository)
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -25,13 +34,15 @@ class CustomerListFragment : Fragment(R.layout.fragment_customer_list) {
 
 
         setupUI()
+        observeViewModel()
     }
 
     private fun setupUI() {
         adapter = CustomerListAdapter(
             dialerClickListener = { initializePhoneCall(it.customerPhone) },
             navigationClickListener = { showToast(requireContext(), "Edit the customer") },
-            navToDetailsClickListener = {customer -> navigateToCustomerManagerFragment(customer)
+            navToDetailsClickListener = { customer ->
+                navigateToCustomerManagerFragment(customer)
 
             }
         )
@@ -41,12 +52,12 @@ class CustomerListFragment : Fragment(R.layout.fragment_customer_list) {
         }
     }
 
-//    private fun observeViewModel() {
-//        rentalViewModel.allCustomers.observe(viewLifecycleOwner) {
-//            Log.d("CustomersListFragment", "Observed customers: $it")
-//            adapter.submitList(it)
-//        }
-//    }
+    private fun observeViewModel() {
+        rentalViewModel.allCustomers.observe(viewLifecycleOwner) {
+            Log.d("CustomersListFragment", "Observed customers: $it")
+            adapter.submitList(it)
+        }
+    }
 
     private fun navigateToCustomerManagerFragment(customer: Customer) {
         val customerId = customer.customerId
