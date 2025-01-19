@@ -22,8 +22,12 @@
     <fragment
         android:id="@+id/addEditCustomerFragment"
         android:name="com.miassolutions.rentingtools.ui.fragments.AddEditCustomerFragment"
-        android:label="@string/add_new_customer"
-        tools:layout="@layout/fragment_add_edit_customer" />
+        android:label="Add/Edit Customer"
+        tools:layout="@layout/fragment_add_edit_customer">
+        <argument
+            android:name="customerId"
+            app:argType="long" />
+    </fragment>
     <fragment
         android:id="@+id/rentalFragment"
         android:name="com.miassolutions.rentingtools.ui.fragments.RentalFragment"

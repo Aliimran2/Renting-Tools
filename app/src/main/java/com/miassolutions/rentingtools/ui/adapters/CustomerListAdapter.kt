@@ -12,9 +12,11 @@ import com.miassolutions.rentingtools.databinding.ItemCustomerBinding
 
 class CustomerListAdapter(
     val dialerClickListener: (Customer) -> Unit,
-    val navigationClickListener: (Customer) -> Unit,
+    val navToEditClickListener: (Customer) -> Unit,
     val navToDetailsClickListener: (Customer) -> Unit,
-) : ListAdapter<Customer, CustomerListAdapter.CustomerVH>(DIFF_UTIL) {
+    val navToTransactionListener: (Customer) -> Unit
+
+    ) : ListAdapter<Customer, CustomerListAdapter.CustomerVH>(DIFF_UTIL) {
 
     companion object {
         val DIFF_UTIL = object : DiffUtil.ItemCallback<Customer>() {
@@ -49,12 +51,17 @@ class CustomerListAdapter(
                     dialerClickListener(customer)
                 }
 
-                root.setOnClickListener {
+                ivCustomer.setOnLongClickListener {
                     navToDetailsClickListener(customer)
+                    true
                 }
 
-                ivCustomer.setOnLongClickListener {
-                    navigationClickListener(customer)
+                root.setOnClickListener {
+                    navToTransactionListener(customer)
+                }
+
+                root.setOnLongClickListener {
+                    navToEditClickListener(customer)
                     true
                 }
             }

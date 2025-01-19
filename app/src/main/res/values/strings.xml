@@ -84,4 +84,5 @@
     <string name="please_select_a_customer">Please select a customer</string>
     <string name="please_select_estimated_return_date">Please select estimated return date</string>
     <string name="please_select_some_tools">Please select some tools</string>
+    <string name="is_updated_successfully">%1$s is updated successfully</string>
 </resources>

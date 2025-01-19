@@ -34,6 +34,9 @@ class SharedViewModel(private val repository: ToolRentalRepository) : ViewModel(
 
     //customer
     val allCustomers: LiveData<List<Customer>> = repository.getAllCustomers()
+
+
+
     fun getCustomerById(customerId: Long): LiveData<Customer?> =
         repository.getCustomerById(customerId)
 
@@ -44,6 +47,16 @@ class SharedViewModel(private val repository: ToolRentalRepository) : ViewModel(
         viewModelScope.launch {
             repository.insertCustomer(customer)
         }
+    }
+
+    fun updateCustomer(customer: Customer) {
+        viewModelScope.launch {
+            repository.updateCustomer(customer)
+            repository.getAllCustomers()
+
+
+        }
+
     }
 
 

@@ -1,7 +1,6 @@
 package com.miassolutions.rentingtools.data
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.miassolutions.rentingtools.core.AppDatabase
 import com.miassolutions.rentingtools.data.models.Customer
 import com.miassolutions.rentingtools.data.models.Tool
@@ -34,6 +33,7 @@ class ToolRentalRepository(private val db: AppDatabase) {
     fun getCustomerById(customerId: Long): LiveData<Customer?> = customerDao.getCustomerById(customerId)
 
     suspend fun insertCustomer(customer: Customer) = customerDao.insertCustomer(customer)
+    suspend fun updateCustomer(customer: Customer) = customerDao.updateCustomer(customer)
 
     fun searchCustomerByNameOrPhone(query: String) : LiveData<List<Customer>> = customerDao.searchCustomersByNameOrPhone(query)
 

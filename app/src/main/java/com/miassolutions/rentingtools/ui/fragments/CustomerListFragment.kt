@@ -32,7 +32,6 @@ class CustomerListFragment : Fragment(R.layout.fragment_customer_list) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentCustomerListBinding.bind(view)
 
-
         setupUI()
         observeViewModel()
     }
@@ -40,16 +39,30 @@ class CustomerListFragment : Fragment(R.layout.fragment_customer_list) {
     private fun setupUI() {
         adapter = CustomerListAdapter(
             dialerClickListener = { initializePhoneCall(it.customerPhone) },
-            navigationClickListener = { showToast(requireContext(), "Edit the customer") },
+            navToEditClickListener = { customer ->
+                navigateForEditing(customer.customerId)
+            },
             navToDetailsClickListener = { customer ->
+                showToast(requireContext(), "showing details of ${customer.customerName}")
+            },
+            navToTransactionListener = {customer ->
                 navigateToCustomerManagerFragment(customer)
-
-            }
+                 },
         )
         binding.rvCustomerList.adapter = adapter
         binding.fabNewCustomer.setOnClickListener {
-            findNavController().navigate(R.id.action_customerListFragment_to_addEditCustomerFragment)
+            val action = CustomerListFragmentDirections.actionCustomerListFragmentToAddEditCustomerFragment(-1L)
+            findNavController().navigate(action)
         }
+    }
+
+    private fun navigateForEditing(customerId: Long) {
+
+        val action =
+            CustomerListFragmentDirections.actionCustomerListFragmentToAddEditCustomerFragment(
+                customerId
+            )
+        findNavController().navigate(action)
     }
 
     private fun observeViewModel() {
@@ -57,6 +70,7 @@ class CustomerListFragment : Fragment(R.layout.fragment_customer_list) {
             Log.d("CustomersListFragment", "Observed customers: $it")
             adapter.submitList(it)
         }
+
     }
 
     private fun navigateToCustomerManagerFragment(customer: Customer) {
