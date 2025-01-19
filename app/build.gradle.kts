@@ -61,6 +61,7 @@ dependencies {
     // Lifecycle
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.8.7") // Latest stable version as of December 11, 2024 :contentReference[oaicite:3]{index=3}
     implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.7") // Latest stable version as of December 11, 2024 :contentReference[oaicite:4]{index=4}
+    implementation ("androidx.lifecycle:lifecycle-livedata-ktx:2.8.7")
 
     // Room Database
     implementation("androidx.room:room-runtime:2.6.1") // Assumed latest stable version

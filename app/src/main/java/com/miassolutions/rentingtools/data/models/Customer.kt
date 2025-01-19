@@ -10,14 +10,15 @@ import androidx.room.PrimaryKey
 )
 data class Customer(
     @PrimaryKey(autoGenerate = true) val customerId: Long = 0L,
-    var customerPic : String ,
+    var customerPic: String,
     var customerName: String,
-    var cnicNumber: String , //TODO()
+    var cnicNumber: String,
     var customerPhone: String,
-    var constructionPlace: String ,//TODO()
-    var contractorName: String , //TODO()
-    var contractorPhone : String , //TODO()
-    var ownerName : String , //TODO()
-    var ownerPhone : String
+    var constructionPlace: String,
+    var contractorName: String,
+    var contractorPhone: String,
+    var ownerName: String,
+    var ownerPhone: String,
+    var totalArrears : Double = 0.0
 )
 
